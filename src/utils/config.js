@@ -8,6 +8,9 @@ const config = {
     user: process.env.SMTP_USER,
     password: process.env.SMTP_PASSWORD,
   },
+  queue: {
+    exportPlaylist: process.env.PLAYLIST_CHANNEL,
+  },
 };
 
 module.exports = config;

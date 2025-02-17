@@ -5,11 +5,11 @@ const run = async (listener) => {
   const connection = await amqplib.connect(config.mq.server);
   const channel = await connection.createChannel();
 
-  await channel.assertQueue('export:playlist', {
+  await channel.assertQueue(config.queue.exportPlaylist, {
     durable: true,
   });
 
-  channel.consume('export:playlist', (message) => listener.listen(message), {
+  channel.consume(config.queue.exportPlaylist, (message) => listener.listen(message), {
     noAck: true,
   });
 };
